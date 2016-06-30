@@ -1,0 +1,51 @@
+﻿@using System.Web;
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    @using(@Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        
+        <div>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Benutzername/E-Mail: </p>
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBox("username", null, new { type = "Text", tabindex = "1" })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Passwort: </p>
+                </div>
+                <div class="col-md-3">
+                    @Html.Password("password", null, new { type = "password", tabindex = "2" })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3">
+                    <input class="btn btn-default" type="submit" name="test" value="Anmelden" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if(!String.IsNullOrEmpty(Convert.ToString(Session["username"])))
+{
+    <div>
+        <p>Hallo @Convert.ToString(Session["username"])!</p>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Logout", "Logout", "Account")
+</div>

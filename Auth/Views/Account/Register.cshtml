@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+<div>
+    @using (@Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>E-Mail: </p>
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBox("email", null, new { type = "Text", tabindex = "1" })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Benutzername: </p>
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBox("username", null, new { type = "Text", tabindex = "2" })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Passwort: </p>
+                </div>
+                <div class="col-md-3">
+                    @Html.Password("password1", null, new { type = "password", tabindex = "3" })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Passwort bestätigen: </p>
+                </div>
+                <div class="col-md-3">
+                    @Html.Password("password2", null, new { type = "password", tabindex = "4" })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3">
+                    <input class="btn btn-default" type="submit" name="test" value="Anmelden" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
